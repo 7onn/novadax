@@ -1,0 +1,21 @@
+
+version: "3.8"
+services:  
+  database:
+    image: hellofresh-database:latest
+    build:
+      context: ./database/
+    container_name: novadax-database
+    ports:
+      - "27017:27017"
+  agent:
+    image: novadax-agent:latest
+    depends_on: 
+      - database
+    build:
+      context: ./src/
+    container_name: novadax-agent
+    # environment:
+    #   SERVE_PORT: 3000
+    #   DATABASE_URL: "hellofresh-database:27017/hellofresh"
+    
