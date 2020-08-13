@@ -16,3 +16,6 @@ vendor/
 
 tmp/
 .env
+
+bid
+.vscode

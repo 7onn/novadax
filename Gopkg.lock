@@ -2,22 +2,6 @@
 
 
 [[projects]]
-  digest = "1:1d1fed60f248dc7d25503911b84bb105736a7d0963771011a9e358a86ae2e179"
-  name = "github.com/jinzhu/gorm"
-  packages = ["."]
-  pruneopts = "UT"
-  revision = "bf55f358c25885d2f4dc97d8a3a46b0c445288b9"
-  version = "v1.9.15"
-
-[[projects]]
-  digest = "1:01ed62f8f4f574d8aff1d88caee113700a2b44c42351943fa73cc1808f736a50"
-  name = "github.com/jinzhu/inflection"
-  packages = ["."]
-  pruneopts = "UT"
-  revision = "f5c5f50e6090ae76a29240b61ae2a90dd810112e"
-  version = "v1.0.0"
-
-[[projects]]
   digest = "1:ecd9aa82687cf31d1585d4ac61d0ba180e42e8a6182b85bd785fcca8dfeefc1b"
   name = "github.com/joho/godotenv"
   packages = ["."]
@@ -28,9 +12,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  input-imports = [
-    "github.com/jinzhu/gorm",
-    "github.com/joho/godotenv",
-  ]
+  input-imports = ["github.com/joho/godotenv"]
   solver-name = "gps-cdcl"
   solver-version = 1

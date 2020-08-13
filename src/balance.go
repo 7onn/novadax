@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"io/ioutil"
+	"log"
 	"net/http"
 )
 
@@ -42,6 +43,7 @@ func getBalance(currency string) currencyBalance {
 
 	for _, v := range b.Data {
 		if v.Currency == currency {
+			log.Printf("%+v %s", v, "|| account/getBalance/")
 			return v
 		}
 		continue

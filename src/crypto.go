@@ -17,7 +17,7 @@ func getSha256(secret string, method string, path string, body string, timestamp
 }
 
 func getMd5(body []byte) string {
-	fmt.Println("getMd5 - input", string(body))
+	// fmt.Println("getMd5 - input", string(body))
 	h := md5.New()
 	io.WriteString(h, string(body))
 	bs := h.Sum(nil)

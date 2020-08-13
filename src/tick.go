@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"log"
 	"net/http"
 	"strconv"
 	"time"
@@ -13,6 +14,12 @@ type quote struct {
 	Time time.Time `json:"time"`
 	High string    `json:"high24h"`
 	Low  string    `json:"low24h"`
+}
+
+func (q quote) avg() float64 {
+	flow, _ := strconv.ParseFloat(q.Low, 64)
+	fhigh, _ := strconv.ParseFloat(q.High, 64)
+	return (fhigh + flow) / 2
 }
 
 type tick struct {
@@ -46,5 +53,7 @@ func getTick(currency string) *tick {
 	b := &tick{}
 	json.Unmarshal(bs, b)
 	b.Data.Time = t
+
+	log.Println("BTC highest:", b.Data.High, "|| BTC lowest", b.Data.Low, "|| BTC avg", b.Data.avg(), "|| market/ticker")
 	return b
 }
