@@ -24,7 +24,7 @@ func (q quote) avg() float64 {
 
 type tick struct {
 	Code    string `json:"code"`
-	Data    quote  `json:"data"`
+	Quote   quote  `json:"data"`
 	Message string `json:"message"`
 }
 
@@ -52,8 +52,8 @@ func getTick(currency string) *tick {
 	bs, _ := ioutil.ReadAll(resp.Body)
 	b := &tick{}
 	json.Unmarshal(bs, b)
-	b.Data.Time = t
+	b.Quote.Time = t
 
-	log.Println("BTC highest:", b.Data.High, "|| BTC lowest", b.Data.Low, "|| BTC avg", b.Data.avg(), "|| market/ticker")
+	log.Println("BTC highest:", b.Quote.High, "|| BTC lowest", b.Quote.Low, "|| BTC avg", b.Quote.avg(), "|| market/ticker")
 	return b
 }

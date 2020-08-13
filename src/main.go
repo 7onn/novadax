@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"os"
 	"time"
 
@@ -34,13 +35,14 @@ func main() {
 		Symbol: "BTC_BRL",
 		Type:   "LIMIT",
 		Side:   "BUY",
-		Price:  tick.Data.avg(), //btc average price of the day
+		Price:  fmt.Sprintf("%.2f", tick.Quote.avg()), //btc average price of the day
 		Amount: p,
 	})
 
 	getBalance("BRL")
 	getBalance("BTC")
 
+	//literal function so you might be able to interrupt the application from terminal
 	func() {
 		time.Sleep(2 * time.Hour)
 		main()

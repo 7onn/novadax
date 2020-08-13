@@ -10,11 +10,11 @@ import (
 )
 
 type buyRequest struct {
-	Symbol string  `json:"symbol"`
-	Type   string  `json:"type"`
-	Side   string  `json:"side"`
-	Amount string  `json:"amount"`
-	Price  float64 `json:"price"`
+	Symbol string `json:"symbol"`
+	Type   string `json:"type"`
+	Side   string `json:"side"`
+	Amount string `json:"amount"`
+	Price  string `json:"price"`
 }
 type cancelRequest struct {
 	ID string `json:"id"`
@@ -41,12 +41,12 @@ type Order struct {
 
 type orderResponse struct {
 	Code    string `json:"code"`
-	Data    Order  `json:"data"`
+	Order   Order  `json:"data"`
 	Message string `json:"message"`
 }
 type ordersResponse struct {
 	Code    string  `json:"code"`
-	Data    []Order `json:"data"`
+	Orders  []Order `json:"data"`
 	Message string  `json:"message"`
 }
 
@@ -76,14 +76,14 @@ func buy(b buyRequest) *Order {
 	json.Unmarshal(bs, or)
 
 	o := &Order{
-		ID:        or.Data.ID,
-		Symbol:    or.Data.Symbol,
-		Amount:    or.Data.Amount,
-		Type:      or.Data.Type,
-		Value:     or.Data.Value,
-		Timestamp: or.Data.Timestamp,
-		Price:     or.Data.Price,
-		Side:      or.Data.Side,
+		ID:        or.Order.ID,
+		Symbol:    or.Order.Symbol,
+		Amount:    or.Order.Amount,
+		Type:      or.Order.Type,
+		Value:     or.Order.Value,
+		Timestamp: or.Order.Timestamp,
+		Price:     or.Order.Price,
+		Side:      or.Order.Side,
 	}
 
 	log.Println(*o, "|| orders/create")
@@ -146,5 +146,5 @@ func getOrders() []Order {
 	or := &ordersResponse{}
 	json.Unmarshal(bs, or)
 
-	return or.Data
+	return or.Orders
 }
